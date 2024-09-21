@@ -69,7 +69,7 @@ function mod(num: number): number {
     return ((num % MOD) + MOD) % MOD;  // Ensure the result is non-negative
 }
 
-numberOfStableArrays(1, 1, 2);
+numberOfStableArrays(4, 3, 4);
 
 function numberOfStableArrays(zeros: number, ones: number, limit: number): number {
 
@@ -89,9 +89,23 @@ function numberOfStableArrays(zeros: number, ones: number, limit: number): numbe
 
     console.log(m, n);
 
+    // limit = 1, loop for 0 and 1
+    // 00 11
+    // 10 10
+    // 01 10
+    // 10 01
+    // 01 01
+    // 11 00
+
+    // 000 111
+    // 100 
+    // 010 101
+    // 001
+
     for (let i = 0; i <= limit; i++) {
         let a = permuations(m, i);
         let b = permuations(n, i);
+        console.log(i, a, b);
         result += a * b;
     }
 
