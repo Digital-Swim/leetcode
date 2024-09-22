@@ -54,7 +54,7 @@ nums is sorted in non-decreasing order.
  */
 
 
-function removeDuplicates(nums: number[]): number {
+function removeDuplicates1(nums: number[]): number {
 
 
     let index = 0;
@@ -63,15 +63,13 @@ function removeDuplicates(nums: number[]): number {
 
     while (cursor < nums.length) {
 
-        if (nums[index] == nums[cursor]) {
-            cursor++;
-        }
-        else {
+        if (nums[index] != nums[cursor]) {
             nums[index + 1] = nums[cursor];
             count++;
             index++;
-            cursor++;
         }
+
+        cursor++;
     }
 
     console.log(nums, count + 1);
@@ -80,4 +78,4 @@ function removeDuplicates(nums: number[]): number {
 };
 
 
-removeDuplicates([0, 0, 0, 1, 1])
+removeDuplicates1([0, 0, 0, 1, 1])
