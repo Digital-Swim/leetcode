@@ -34,3 +34,29 @@ export function arrayToTree(arr: (number | null)[]): TreeNode | null {
 
     return root;
 }
+
+export function treeToArray(root: TreeNode | null): (number | null)[] {
+    if (!root) return [];
+
+    const result: (number | null)[] = [];
+    const queue: (TreeNode | null)[] = [root];
+
+    while (queue.length > 0) {
+        const node = queue.shift();
+
+        if (node) {
+            result.push(node.val);
+            queue.push(node.left);
+            queue.push(node.right);
+        } else {
+            result.push(null);
+        }
+    }
+
+    // Remove trailing `null`s (they don’t affect tree structure)
+    while (result.length > 0 && result[result.length - 1] === null) {
+        result.pop();
+    }
+
+    return result;
+}
